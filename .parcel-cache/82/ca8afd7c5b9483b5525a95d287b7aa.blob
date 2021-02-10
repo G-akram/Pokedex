@@ -1,0 +1,125 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSearch = exports.getPokemon = exports.getPokemonList = exports.loadAllPokemonType = exports.loadAllPokemon = exports.loadPokemon = void 0;
+
+var _helper = require("./helper");
+
+var pokemon = _interopRequireWildcard(require("./models/pokemon"));
+
+var _config = require("./config.js");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+const state = {
+  pokemon: {},
+  allPokemonType: {
+    type: null,
+    pokemonList: [],
+    resultsPerPage: _config.RES_PER_PAGE,
+    numberOfPages: null,
+    page: 1
+  },
+  favorites: []
+}; // load pokemon by name
+
+const loadPokemon = async function (pokemonSearched, loadAll = false, fetchByName = true) {
+  try {
+    let data;
+    let pokemonObj;
+
+    if (fetchByName) {
+      data = await fetchPokemon(pokemonSearched);
+      pokemonObj = await pokemon.generatePokemonObj(data);
+      state.pokemon = pokemonObj;
+    } else {
+      data = await fetchPokemonByUrl(pokemonSearched);
+      pokemonObj = await pokemon.generatePokemonObj(data);
+      return pokemonObj;
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+exports.loadPokemon = loadPokemon;
+
+const fetchPokemon = async function (pokemon) {
+  const data = await (0, _helper.AJAX)(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  return data;
+};
+
+const fetchPokemonByUrl = async function (url) {
+  const data = await (0, _helper.AJAX)(`${url}`);
+  return data;
+};
+
+const loadAllPokemon = async function (page = 1, type = 'all') {
+  const data = await (0, _helper.AJAX)(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=800`);
+  state.allPokemonType.page = page;
+  const start = (page - 1) * state.allPokemonType.resultsPerPage;
+  const end = page * state.allPokemonType.resultsPerPage;
+  const pokemonList = [];
+
+  for (let index = start; index < end; index++) {
+    const pokemonObj = await loadPokemon(data.results[index].url, true, false);
+    pokemonList.push(pokemonObj);
+  } // get the number of page so we can display numbers of pages in pagination buttons
+
+
+  state.allPokemonType.type = type;
+  state.allPokemonType.pokemonList = pokemonList;
+  state.allPokemonType.numberOfPages = data.results.length;
+  return pokemonList;
+}; // loading types
+
+
+exports.loadAllPokemon = loadAllPokemon;
+
+const loadAllPokemonType = async function (type, page = 1) {
+  const data = await (0, _helper.AJAX)(`https://pokeapi.co/api/v2/type/${type}`);
+  const allPokemonType = data.pokemon;
+  state.allPokemonType.page = page;
+  const start = (page - 1) * state.allPokemonType.resultsPerPage;
+  const end = page * state.allPokemonType.resultsPerPage;
+  const pokemonList = [];
+
+  for (let index = start; index < end; index++) {
+    const pokemonObj = await loadPokemon(allPokemonType[index].pokemon.url, true, false);
+    pokemonList.push(pokemonObj);
+  } // get the number of page so we can display numbers of pages in pagination buttons
+
+
+  state.allPokemonType.type = type;
+  state.allPokemonType.pokemonList = pokemonList;
+  state.allPokemonType.numberOfPages = allPokemonType.length;
+}; // getters
+
+
+exports.loadAllPokemonType = loadAllPokemonType;
+
+const getPokemonList = function () {
+  return state.allPokemonType.pokemonList;
+};
+
+exports.getPokemonList = getPokemonList;
+
+const getPokemon = function () {
+  return state.pokemon;
+};
+
+exports.getPokemon = getPokemon;
+
+const getSearch = function () {
+  return {
+    numberOfPages: state.allPokemonType.numberOfPages,
+    currentPage: state.allPokemonType.page,
+    resultsPerPage: state.allPokemonType.resultsPerPage
+  };
+};
+
+exports.getSearch = getSearch;

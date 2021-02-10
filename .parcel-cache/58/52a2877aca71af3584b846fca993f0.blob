@@ -1,0 +1,88 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _icons = _interopRequireDefault(require("url:../../img/svg/icons.svg"));
+
+var _view = _interopRequireDefault(require("./view"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class PokemonView extends _view.default {
+  constructor() {
+    super();
+
+    _defineProperty(this, "_data", void 0);
+
+    _defineProperty(this, "_parentElement", document.querySelector('.pokemon-list'));
+
+    this.addHandlerBtnDetailsClick();
+  }
+
+  addHandlerVisit(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn-visit');
+      if (!btn) return;
+      const pokemonName = btn.dataset.name;
+      handler(pokemonName);
+    });
+  }
+
+  addHandlerBtnDetailsClick() {
+    this._parentElement.addEventListener('click', function (e) {
+      let detailsContainer;
+      let btn;
+
+      if (e.target.classList.contains('btn-details')) {
+        // e.target.innerText = text;
+        btn = e.target;
+      }
+
+      if (e.target.dataset.icon) {
+        btn = e.target.parentElement.parentElement;
+      }
+
+      if (e.target.classList.contains('toggle-details')) {
+        btn = e.target.parentElement;
+      }
+
+      if (!btn) return;
+      detailsContainer = btn.parentElement.parentElement.parentElement.parentElement.querySelector('.details');
+      detailsContainer.classList.toggle('hidden'); // toggle show hide text
+
+      if (btn.dataset.hide === 'true') {
+        btn.firstElementChild.textContent = 'hide details';
+        btn.dataset.hide = false;
+      } else {
+        btn.firstElementChild.textContent = 'show details';
+        btn.dataset.hide = true;
+      }
+    });
+  }
+
+  render(pokemon) {
+    this._data = pokemon;
+    const markup = this.generateMarkup();
+
+    this._clear();
+
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+
+    const paginationContainer = document.querySelector('.footer .container');
+    paginationContainer.innerHTML = '';
+  }
+
+  generateMarkup() {
+    return this.generatePokemon(this._data);
+  }
+
+}
+
+var _default = new PokemonView();
+
+exports.default = _default;

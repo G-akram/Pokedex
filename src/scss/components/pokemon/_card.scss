@@ -1,0 +1,107 @@
+.pokemon__card {
+	justify-self: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	max-width: max-content;
+	padding: 1.5rem 2.5rem;
+
+	box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.2);
+
+	position: relative;
+
+	& > span {
+		max-width: min-content;
+		max-height: min-content;
+	}
+
+	.circle {
+		display: inline-block;
+
+		min-width: 6rem;
+		min-height: 6rem;
+		border-radius: 50%;
+		display: grid;
+		place-content: center;
+		text-align: center;
+		top: 0;
+
+		background: $color-white;
+		box-shadow: 0 10px 10px rgba($color: $color-grey-dark-2, $alpha: 0.1),
+			0 -10px 20px rgba($color: $color-grey-dark-2, $alpha: 0.1);
+
+		font-size: 1.3rem;
+	}
+
+	.height {
+		position: absolute;
+		left: 0;
+		transform: translate(-25%, -25%);
+	}
+
+	.weight {
+		position: absolute;
+		right: 0;
+		transform: translate(25%, -25%);
+	}
+
+	.header {
+		position: relative;
+
+		.number {
+			font-size: 100px;
+			letter-spacing: 15px;
+			color: rgba($color: $color-grey-dark-1, $alpha: 0.3);
+			position: relative;
+			line-height: 1.2;
+		}
+
+		.img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -10%);
+			height: 120px;
+		}
+	}
+
+	.infos {
+		display: flex;
+		flex-direction: column;
+		grid-gap: 0.4rem;
+		text-align: center;
+
+		margin-top: 5rem;
+
+		.name {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: $color-black;
+		}
+
+		.genus {
+			font-size: 1.3rem;
+			width: max-content;
+			color: $color-grey-light-3;
+			font-weight: normal;
+			margin: 0 auto;
+		}
+
+		.type {
+			display: flex;
+			grid-gap: 1rem;
+
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	.abilities {
+		display: flex;
+		margin: 1rem 0;
+		font-size: 1.4rem;
+
+		grid-gap: 1rem;
+	}
+}

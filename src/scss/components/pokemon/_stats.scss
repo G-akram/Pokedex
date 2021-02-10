@@ -1,0 +1,43 @@
+.stats {
+	display: grid;
+	grid-gap: 1rem;
+	align-items: center;
+	place-content: center;
+
+	.stat {
+		display: grid;
+		grid-template-columns: 2fr 1fr 4fr;
+		justify-content: center;
+		align-self: center;
+		grid-gap: 2rem;
+
+		font-size: 1.4rem;
+		.title {
+			text-align: center;
+		}
+
+		.number {
+		}
+	}
+
+	.bar {
+		background: $color-grey-light-2;
+		align-self: center;
+		height: 5px;
+		width: 250px;
+	}
+	.low {
+		background: $color-low;
+	}
+
+	.medium {
+		background: $color-medium;
+	}
+	.high {
+		background: $color-high;
+	}
+
+	.epic {
+		background: $color-epic;
+	}
+}

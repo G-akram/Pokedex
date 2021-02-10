@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+		<link rel="stylesheet" href="css/main.css" />
+		<script defer src="js/controler.js"></script>
+		<title>Pokedex</title>
+	</head>
+	<body>
+		<!--header-->
+		<header class="header">
+			<div class="logo">
+				<svg class="fav__icon">
+					<use href="img/svg/icons.svg#pikachu"></use>
+				</svg>
+				<h1>pokedex</h1>
+			</div>
+
+			<form class="search">
+				<input type="text" class="search__field" placeholder="Search a pokemon" />
+				<button class="btn search__btn">
+					<svg class="search__icon">
+						<use href="img/svg/icons.svg#search"></use>
+					</svg>
+					<span>Search</span>
+				</button>
+			</form>
+
+			<div class="fav">
+				<button class="btn fav__btn">
+					<svg class="fav__icon">
+						<use href="img/svg/icons.svg#heart-fill"></use>
+					</svg>
+					<span>my favorites</span>
+				</button>
+
+				<ul class="fav__dropdown">
+					<div class="message hidden">
+						<p>No pokemons yet. Find your dream team and add them :)</p>
+					</div>
+
+					<!-- <li class="preview active">
+						<a href="" class="preview__link">
+							<figure class="preview__fig">
+								<img src="img/bulbasur.png" alt="Test" />
+							</figure>
+							<div class="preview__data">
+								<h4 class="name">abra</h4>
+								<div class="types">
+									<span class="type badge badge--grass">grass</span>
+									<span class="type badge badge--poison">poison</span>
+								</div>
+							</div>
+						</a>
+					</li> -->
+				</ul>
+			</div>
+		</header>
+
+		<div class="main">
+			<nav class="nav">
+				<div class="nav__links">
+					<a href="#type-all" class="nav__item all active"
+						><span class="btn btn--item"><p>all</p></span></a
+					>
+					<a href="#type-1" class="nav__item normal">
+						<span class="btn btn--item"><p>normal</p></span>
+					</a>
+					<a href="#type-2" class="nav__item fighting">
+						<span class="btn btn--item"><p>fighting</p></span>
+					</a>
+					<a href="#type-3" class="nav__item flying">
+						<span class="btn btn--item"><p>flying</p></span>
+					</a>
+					<a href="#type-4" class="nav__item poison">
+						<span class="btn btn--item"><p>poison</p></span>
+					</a>
+					<a href="#type-5" class="nav__item ground">
+						<span class="btn btn--item"><p>ground</p></span>
+					</a>
+					<a href="#type-6" class="nav__item rock"
+						><span class="btn btn--item"><p>rock</p></span></a
+					>
+					<a href="#type-7" class="nav__item bug"
+						><span class="btn btn--item"><p>bug</p></span></a
+					>
+					<a href="#type-8" class="nav__item ghost">
+						<span class="btn btn--item"><p>ghost</p></span>
+					</a>
+					<a href="#type-9" class="nav__item steel">
+						<span class="btn btn--item"><p>steel</p></span>
+					</a>
+					<a href="#type-10" class="nav__item fire"
+						><span class="btn btn--item"><p>fire</p></span></a
+					>
+					<a href="#type-11" class="nav__item water">
+						<span class="btn btn--item"><p>water</p></span>
+					</a>
+					<a href="#type-12" class="nav__item grass">
+						<span class="btn btn--item"><p>grass</p></span>
+					</a>
+					<a href="#type-13" class="nav__item electric">
+						<span class="btn btn--item"><p>electric</p></span>
+					</a>
+					<a href="#type-14" class="nav__item psychic">
+						<span class="btn btn--item"><p>psychic</p></span>
+					</a>
+					<a href="#type-14" class="nav__item ice"
+						><span class="btn btn--item"><p>ice</p></span></a
+					>
+					<a href="#type-16" class="nav__item dragon">
+						<span class="btn btn--item"><p>dragon</p></span>
+					</a>
+					<a href="#type-17" class="nav__item dark"
+						><span class="btn btn--item"><p>dark</p></span></a
+					>
+					<a href="#type-18" class="nav__item fairy">
+						<span class="btn btn--item"><p>fairy</p></span>
+					</a>
+				</div>
+			</nav>
+
+			<!--Results view -->
+			<div class="results">
+				<!-- <div class="spinner">
+					<svg class="fav__icon">
+						<use href="img/svg/icons.svg#loading"></use>
+					</svg>
+				</div> -->
+				<!--pokemon-->
+
+				<div class="pokemon-list">
+					<div class="message">
+						search ur pokemon by typing the name in the seachbar or by type in the
+						left menu ;) !
+					</div>
+					<!-- <div class="pokemon">
+					<div class="main">
+						<div class="pokemon__card">
+							<span class="height circle">0.9m</span>
+							<span class="weight circle">19.5kg</span>
+							<span class="header">
+								<span class="number">#057</span>
+								<img src="img/abra.png" alt="" class="img" />
+							</span>
+
+							<span class="infos">
+								<span class="name">abra</span>
+								<span class="genus">psi pokémon</span>
+								<div class="type">
+									<span class="type badge badge--psychic">PSYCHIC</span>
+									<span class="type badge badge--grass">grass</span>
+									<span class="type badge badge--fire">fire</span>
+								</div>
+							</span>
+
+							<div class="moves">
+								<p>Synchronize</p>
+								<p>Inner Focus</p>
+								<p>Magic Guards</p>
+							</div>
+						</div>
+
+						<div class="pokemon__infos">
+							<div class="stats">
+								<div class="stat">
+									<p class="title">hp</p>
+									<p class="number">45</p>
+									<div class="bar bar-total">
+										<div class="bar bar-stat low" style="width: 45px"></div>
+									</div>
+								</div>
+								<div class="stat">
+									<p class="title">attack</p>
+									<p class="number">85</p>
+									<div class="bar bar-total">
+										<div class="bar bar-stat high" style="width: 85px"></div>
+									</div>
+								</div>
+								<div class="stat">
+									<p class="title">defense</p>
+									<p class="number">65</p>
+									<div class="bar bar-total">
+										<div class="bar bar-stat medium" style="width: 65px"></div>
+									</div>
+								</div>
+								<div class="stat">
+									<p class="title">special attack</p>
+									<p class="number">90</p>
+									<div class="bar bar-total">
+										<div class="bar bar-stat high" style="width: 90px"></div>
+									</div>
+								</div>
+								<div class="stat">
+									<p class="title">special defense</p>
+									<p class="number">35</p>
+									<div class="bar bar-total">
+										<div class="bar bar-stat low" style="width: 35px"></div>
+									</div>
+								</div>
+								<div class="stat">
+									<p class="title">speed</p>
+									<p class="number">130</p>
+									<div class="bar">
+										<div class="bar epic" style="width: 130px"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="actions">
+								<button class="btn btn--details">
+									show details
+									<svg class="fav__icon">
+										<use href="img/svg/icons.svg#pokeball"></use>
+									</svg>
+								</button>
+
+								<button class="btn btn--fav">
+									<svg class="heart">
+										<use href="img/svg/icons.svg#heart"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="details hidden">
+						<div class="evolutions">
+							<div class="title">
+								<h3>evolutions :</h3>
+							</div>
+
+							<div class="container">
+								<div class="evolution">
+									<div class="img">
+										<img src="img/abra.png" alt="" />
+									</div>
+									<span class="number">#063</span>
+									<span class="name">abra</span>
+									<span class="type badge badge--psychic">PSYCHIC</span>
+
+									<button class="btn btn--details">
+										visit
+										<svg class="fav__icon">
+											<use href="img/svg/icons.svg#pokeball"></use>
+										</svg>
+									</button>
+								</div>
+
+								<div class="arrow">
+									<svg class="fav__icon">
+										<use href="img/svg/icons.svg#right-arrow"></use>
+									</svg>
+								</div>
+
+								<div class="evolution">
+									<div class="img">
+										<img src="img/Kadabra.png" alt="" />
+									</div>
+									<span class="number">#064</span>
+									<span class="name">Kadabra</span>
+									<span class="type badge badge--psychic">PSYCHIC</span>
+
+									<button class="btn btn--details">
+										visit
+										<svg class="fav__icon">
+											<use href="img/svg/icons.svg#pokeball"></use>
+										</svg>
+									</button>
+								</div>
+
+								<div class="arrow">
+									<svg class="fav__icon">
+										<use href="img/svg/icons.svg#right-arrow"></use>
+									</svg>
+								</div>
+
+								<div class="evolution">
+									<div class="img">
+										<img src="img/alakazam.png" alt="" />
+									</div>
+									<span class="number">#065</span>
+									<span class="name">abra</span>
+									<span class="type badge badge--psychic">PSYCHIC</span>
+
+									<button class="btn btn--details">
+										visit
+										<svg class="fav__icon">
+											<use href="img/svg/icons.svg#pokeball"></use>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="moves">
+							<div class="title">
+								<h3>moves :</h3>
+							</div>
+							<div class="container">
+								<p>move-1</p>
+								<p>move-2</p>
+								<p>move-35</p>
+							</div>
+						</div>
+						<div class="strong">
+							<div class="title">
+								<h3>Strong against :</h3>
+							</div>
+							<div class="container">
+								<span class="badge badge--fighting">fighting</span>
+
+								<span class="badge badge--psychic">psychic</span>
+							</div>
+						</div>
+						<div class="weak">
+							<div class="title">
+								<h3>weak against :</h3>
+							</div>
+							<div class="container">
+								<span class="badge badge--ghost">ghost</span>
+								<span class="badge badge--bug">bug</span>
+								<span class="badge badge--dark">dark</span>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				</div>
+
+				<footer class="footer">
+					<div class="container">
+						<!-- <button class="btn btn--previous">
+							<svg class="fav__icon">
+								<use href="img/svg/icons.svg#left-arrow"></use>
+							</svg>
+							<p>page 1</p>
+						</button>
+
+						<button class="btn btn--next">
+							<p>page 2</p>
+							<svg class="fav__icon">
+								<use href="img/svg/icons.svg#right-arrow"></use>
+							</svg>
+						</button> -->
+					</div>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

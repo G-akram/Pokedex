@@ -1,0 +1,12 @@
+.strong,
+.weak {
+	.container {
+		margin-left: 2rem;
+
+		display: flex;
+		grid-gap: 1.5rem;
+
+		flex-wrap: wrap;
+		max-width: 80%;
+	}
+}

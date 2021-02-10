@@ -1,0 +1,86 @@
+.nav__links {
+	padding: 0 2rem;
+	.all {
+	}
+
+	.normal {
+		color: $color-normal;
+	}
+
+	.fighting {
+		color: $color-fighting;
+	}
+
+	.flying {
+		color: $color-flying;
+	}
+
+	.poison {
+		color: $color-poison;
+	}
+
+	.ground {
+		color: $color-ground;
+	}
+
+	.rock {
+		color: $color-rock;
+	}
+
+	.bug {
+		color: $color-bug;
+	}
+
+	.ghost {
+		color: $color-ghost;
+	}
+
+	.steel {
+		color: $color-steel;
+	}
+
+	.fire {
+		color: $color-fire;
+	}
+
+	.water {
+		color: $color-water;
+	}
+
+	.grass {
+		color: $color-grass;
+	}
+
+	.electric {
+		color: $color-electric;
+	}
+
+	.psychic {
+		color: $color-psychic;
+	}
+
+	.ice {
+		color: $color-ice;
+	}
+
+	.dragon {
+		color: $color-dragon;
+	}
+
+	.dark {
+		color: $color-dark;
+	}
+	.fairy {
+		color: $color-fairy;
+	}
+
+	.nav__item:hover,
+	.active {
+		.btn--item {
+			background: currentColor;
+		}
+		p {
+			color: white;
+		}
+	}
+}

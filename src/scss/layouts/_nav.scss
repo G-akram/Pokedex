@@ -1,0 +1,9 @@
+.nav {
+	height: 90vh;
+
+	background: $color-white;
+	border-right: 1px solid rgba($color: $color-grey-light-2, $alpha: 1);
+	overflow: auto;
+
+	padding: 0 1rem;
+}

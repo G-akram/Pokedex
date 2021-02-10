@@ -1,0 +1,14 @@
+.main {
+	display: grid;
+	grid-template-columns: minmax(10vw, max-content) 1fr;
+}
+
+.message {
+	display: grid;
+	place-content: center;
+
+	text-transform: capitalize;
+	font-size: 2rem;
+
+	padding: 1rem 3rem;
+}

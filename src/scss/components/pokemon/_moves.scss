@@ -1,0 +1,12 @@
+.moves {
+	.container {
+		margin-left: 2rem;
+	}
+	p {
+		display: inline-block;
+		border: 1px solid $color-grey-light-2;
+		padding: 0.3rem 1rem;
+		margin: 0.5rem 0.3rem;
+		border-radius: 10px;
+	}
+}

@@ -1,0 +1,21 @@
+@import 'base/variables';
+@import 'base/base';
+
+@import 'components/buttons';
+@import 'components/itemLink';
+@import 'components/badges';
+@import 'components/spinner';
+
+@import 'components/pokemon/card';
+@import 'components/pokemon/stats';
+@import 'components/pokemon/infos';
+@import 'components/pokemon/evolutions';
+@import 'components/pokemon/moves';
+@import 'components/pokemon/against';
+@import 'components/pokemon/pokemon';
+
+@import 'layouts/header';
+@import 'layouts/footer';
+@import 'layouts/nav';
+@import 'layouts/results';
+@import 'page';

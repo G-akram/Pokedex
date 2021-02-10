@@ -1,0 +1,11 @@
+footer.footer {
+	align-self: flex-end;
+	margin: 2rem 0;
+	display: grid;
+	place-content: center;
+	padding: 2rem 0;
+	.container {
+		display: flex;
+		grid-gap: 3rem;
+	}
+}
